@@ -1,6 +1,6 @@
 # 4-bit-cpu
 
-> https://electronics.stackexchange.com/questions/367541/how-to-write-a-program-for-4-bit-cpu-made-in-logisim 페이지를 참고하여 4 bit cpu를 만들었습니다. <br> 해당 페이지에 나와 있는 회로를 그대로 따라하니 문제가 생겨, 회로를 수정 하였고, 해당 페이지 내의 *Table 2-Program PROM Bit Map*의 표도 제가 채워 넣었습니다. Instruction 또한 제가 구상한 것입니다.
+> I made a 4 bit cpu referring to the https://electronics.stackexchange.com/questions/367541/how-to-write-a-program-for-4-bit-cpu-made-in-logisim. <br> I had a problem copying the circuit shown on the page, so I fixed the circuit, and I filled the table of *Table 2-Program PROM Bit Map* in that page. Instruction is also what I envisioned.
 
 ## Project Stack
 
