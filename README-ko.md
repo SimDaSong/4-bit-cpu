@@ -4,6 +4,8 @@
 
 **Logisim**(시각적 회로 설계)과 **Verilog HDL**(시뮬레이션)로 밑바닥부터 설계한 4-bit CPU입니다.
 
+**[브라우저에서 바로 실행해보기](https://simdasong.github.io/4-bit-cpu/)** — 설치 없이 어셈블리를 작성하고 한 단계씩 실행할 수 있습니다.
+
 [Electronics Stack Exchange의 회로](https://electronics.stackexchange.com/questions/367541/how-to-write-a-program-for-4-bit-cpu-made-in-logisim)를 참고하여 시작했지만, 원본 회로를 그대로 복제할 수 없는 문제가 있어 회로를 수정했습니다. 명령어 집합과 명령어 디코더 매핑은 직접 설계했습니다.
 
 ## 아키텍처
@@ -82,7 +84,13 @@ opcode    -    Addr D   -   Addr A   -   Addr B / Data
 ├── mux_8to1.v                # 8-to-1 멀티플렉서
 ├── decoder_3to8.v            # 3-to-8 원-핫 디코더
 ├── fulladder.v               # 전가산기
+├── Makefile                  # 빌드 자동화 (make run / make wave / make clean)
+├── Dockerfile                # 로컬 설치 없이 시뮬레이션 실행
 ├── Instruction.txt           # 예제 프로그램 목록
+├── docs/                     # 웹 플레이그라운드 (GitHub Pages)
+│   ├── index.html
+│   ├── style.css
+│   └── cpu.js
 └── images/
     ├── Instruction-Set.png
     ├── Instruction-Operation-Code(opcode).png
@@ -96,24 +104,29 @@ Logisim 구현에는 **프로그램 카운터(PC)**와 두 개의 **PROM**이 �
 
 <img src="images/logisim_main.png" alt="Logisim 회로" />
 
-## Verilog 시뮬레이션 실행
+## 시작하기
 
-### 사전 요구사항
+### 방법 1: 웹 플레이그라운드 (설치 불필요)
 
-- [Icarus Verilog](https://steveicarus.github.io/iverilog/) — 컴파일 및 시뮬레이션
-- [GTKWave](http://gtkwave.sourceforge.net/) — 파형 뷰어 (선택)
+**[https://simdasong.github.io/4-bit-cpu/](https://simdasong.github.io/4-bit-cpu/)**
 
-### 빌드 및 실행
+브라우저에서 어셈블리를 작성하고 한 단계씩 실행할 수 있습니다. 레지스터, 프로그램 카운터, 디스플레이 출력이 실시간으로 업데이트됩니다.
+
+### 방법 2: Make (로컬)
+
+[Icarus Verilog](https://steveicarus.github.io/iverilog/)와 선택적으로 [GTKWave](http://gtkwave.sourceforge.net/)가 필요합니다.
 
 ```bash
-iverilog -o cpu.vvp cpu_tb.v
-vvp cpu.vvp
+make run     # 컴파일 및 시뮬레이션 실행
+make wave    # 컴파일, 시뮬레이션, 파형 뷰어 열기
+make clean   # 빌드 산출물 정리
 ```
 
-### 파형 확인
+### 방법 3: Docker (로컬 설치 불필요)
 
 ```bash
-gtkwave cpu.vcd
+docker build -t 4bit-cpu .
+docker run --rm 4bit-cpu
 ```
 
 ## 예제 프로그램

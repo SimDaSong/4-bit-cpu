@@ -4,6 +4,8 @@
 
 A fully functional 4-bit CPU designed from scratch using **Logisim** (visual circuit) and **Verilog HDL** (simulation).
 
+**[Try it in your browser](https://simdasong.github.io/4-bit-cpu/)** — write assembly, assemble, and step through execution with no install required.
+
 This project was inspired by a circuit from [Electronics Stack Exchange](https://electronics.stackexchange.com/questions/367541/how-to-write-a-program-for-4-bit-cpu-made-in-logisim). The original circuit had issues when replicated, so it was fixed and improved. The instruction set and instruction decoder mapping were designed independently.
 
 ## Architecture
@@ -82,7 +84,13 @@ Each opcode maps to a 7-bit control word:
 ├── mux_8to1.v                # 8-to-1 multiplexer
 ├── decoder_3to8.v            # 3-to-8 one-hot decoder
 ├── fulladder.v               # Full adder
+├── Makefile                  # Build automation (make run / make wave / make clean)
+├── Dockerfile                # Run simulation without local install
 ├── Instruction.txt           # Sample program listing
+├── docs/                     # Web Playground (GitHub Pages)
+│   ├── index.html
+│   ├── style.css
+│   └── cpu.js
 └── images/
     ├── Instruction-Set.png
     ├── Instruction-Operation-Code(opcode).png
@@ -96,24 +104,29 @@ The Logisim implementation includes a **Program Counter (PC)** and two **PROMs**
 
 <img src="images/logisim_main.png" alt="Logisim Circuit" />
 
-## Running the Verilog Simulation
+## Getting Started
 
-### Prerequisites
+### Option 1: Web Playground (no install)
 
-- [Icarus Verilog](https://steveicarus.github.io/iverilog/) for compilation and simulation
-- [GTKWave](http://gtkwave.sourceforge.net/) for waveform viewing (optional)
+**[https://simdasong.github.io/4-bit-cpu/](https://simdasong.github.io/4-bit-cpu/)**
 
-### Build & Run
+Write assembly in the browser, assemble, and step through execution. Registers, program counter, and display output update in real time.
+
+### Option 2: Make (local)
+
+Requires [Icarus Verilog](https://steveicarus.github.io/iverilog/) and optionally [GTKWave](http://gtkwave.sourceforge.net/).
 
 ```bash
-iverilog -o cpu.vvp cpu_tb.v
-vvp cpu.vvp
+make run     # Compile and run simulation
+make wave    # Compile, run, and open waveform viewer
+make clean   # Remove build artifacts
 ```
 
-### View Waveforms
+### Option 3: Docker (no local install)
 
 ```bash
-gtkwave cpu.vcd
+docker build -t 4bit-cpu .
+docker run --rm 4bit-cpu
 ```
 
 ## Example Program
