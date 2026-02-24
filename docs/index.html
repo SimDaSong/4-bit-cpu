@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>4-Bit CPU Playground</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>4-Bit CPU Playground</h1>
+    <p>Write assembly, run it, watch the CPU execute step by step.</p>
+  </header>
+
+  <main>
+    <section class="editor-panel">
+      <div class="panel-header">
+        <h2>Assembly</h2>
+        <div class="btn-group">
+          <button id="btn-example">Load Example</button>
+        </div>
+      </div>
+      <textarea id="code" spellcheck="false" placeholder="LD $1, 1
+LD $2, 3
+ADD $3, $1, $2
+DISP $0, $3"></textarea>
+      <div id="asm-error" class="error"></div>
+    </section>
+
+    <section class="control-panel">
+      <div class="controls">
+        <button id="btn-assemble">Assemble</button>
+        <button id="btn-run" disabled>Run All</button>
+        <button id="btn-step" disabled>Step</button>
+        <button id="btn-reset" disabled>Reset</button>
+      </div>
+      <div class="speed-control">
+        <label for="speed">Speed</label>
+        <input type="range" id="speed" min="50" max="1000" value="300" step="50" />
+        <span id="speed-val">300ms</span>
+      </div>
+    </section>
+
+    <section class="state-panel">
+      <div class="registers">
+        <h2>Registers</h2>
+        <div id="reg-grid" class="reg-grid"></div>
+      </div>
+
+      <div class="program-view">
+        <h2>Program <span id="pc-display" class="pc-badge">PC: 0</span></h2>
+        <div id="program-list" class="program-list"></div>
+      </div>
+
+      <div class="output-view">
+        <h2>Display Output</h2>
+        <div id="display-output" class="display-output"></div>
+      </div>
+    </section>
+
+    <section class="machine-code-panel">
+      <h2>Machine Code</h2>
+      <div id="machine-code" class="machine-code"></div>
+    </section>
+  </main>
+
+  <footer>
+    <a href="https://github.com/SimDaSong/4-bit-cpu" target="_blank">GitHub</a>
+  </footer>
+
+  <script src="cpu.js"></script>
+</body>
+</html>
