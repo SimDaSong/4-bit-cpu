@@ -75,27 +75,29 @@ Each opcode maps to a 7-bit control word:
 ## Project Structure
 
 ```
-├── 4-bit-cpu.circ            # Logisim circuit file
-├── cpu.v                     # CPU top module (instruction decoder + datapath)
-├── alu.v                     # Arithmetic Logic Unit
-├── three_port_reg_file.v     # 8 x 4-bit register file with 3 ports
-├── cpu_tb.v                  # Testbench with sample program
-├── mux_4to1.v                # 4-to-1 multiplexer
-├── mux_8to1.v                # 8-to-1 multiplexer
-├── decoder_3to8.v            # 3-to-8 one-hot decoder
-├── fulladder.v               # Full adder
-├── Makefile                  # Build automation (make run / make wave / make clean)
-├── Dockerfile                # Run simulation without local install
-├── Instruction.txt           # Sample program listing
+├── src/                      # Verilog HDL source
+│   ├── cpu.v                 #   CPU top module (instruction decoder + datapath)
+│   ├── alu.v                 #   Arithmetic Logic Unit
+│   ├── three_port_reg_file.v #   8 x 4-bit register file with 3 ports
+│   ├── cpu_tb.v              #   Testbench with sample program
+│   ├── mux_4to1.v            #   4-to-1 multiplexer
+│   ├── mux_8to1.v            #   8-to-1 multiplexer
+│   ├── decoder_3to8.v        #   3-to-8 one-hot decoder
+│   ├── fulladder.v           #   Full adder
+│   └── Instruction.txt       #   Sample program listing
+├── logisim/
+│   └── 4-bit-cpu.circ        # Logisim circuit file
 ├── docs/                     # Web Playground (GitHub Pages)
 │   ├── index.html
 │   ├── style.css
 │   └── cpu.js
-└── images/
-    ├── Instruction-Set.png
-    ├── Instruction-Operation-Code(opcode).png
-    ├── logisim_main.png
-    └── verilog_cpu_tb.png
+├── images/
+│   ├── Instruction-Set.png
+│   ├── Instruction-Operation-Code(opcode).png
+│   ├── logisim_main.png
+│   └── verilog_cpu_tb.png
+├── Makefile                  # Build automation (make run / make wave / make clean)
+└── Dockerfile                # Run simulation without local install
 ```
 
 ## Logisim Circuit

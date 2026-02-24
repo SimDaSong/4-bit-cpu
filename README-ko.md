@@ -75,27 +75,29 @@ opcode    -    Addr D   -   Addr A   -   Addr B / Data
 ## 프로젝트 구조
 
 ```
-├── 4-bit-cpu.circ            # Logisim 회로 파일
-├── cpu.v                     # CPU 최상위 모듈 (명령어 디코더 + 데이터패스)
-├── alu.v                     # 산술 논리 연산 장치
-├── three_port_reg_file.v     # 8 x 4-bit 레지스터 파일 (3 포트)
-├── cpu_tb.v                  # 테스트벤치 (예제 프로그램 포함)
-├── mux_4to1.v                # 4-to-1 멀티플렉서
-├── mux_8to1.v                # 8-to-1 멀티플렉서
-├── decoder_3to8.v            # 3-to-8 원-핫 디코더
-├── fulladder.v               # 전가산기
-├── Makefile                  # 빌드 자동화 (make run / make wave / make clean)
-├── Dockerfile                # 로컬 설치 없이 시뮬레이션 실행
-├── Instruction.txt           # 예제 프로그램 목록
+├── src/                      # Verilog HDL 소스
+│   ├── cpu.v                 #   CPU 최상위 모듈 (명령어 디코더 + 데이터패스)
+│   ├── alu.v                 #   산술 논리 연산 장치
+│   ├── three_port_reg_file.v #   8 x 4-bit 레지스터 파일 (3 포트)
+│   ├── cpu_tb.v              #   테스트벤치 (예제 프로그램 포함)
+│   ├── mux_4to1.v            #   4-to-1 멀티플렉서
+│   ├── mux_8to1.v            #   8-to-1 멀티플렉서
+│   ├── decoder_3to8.v        #   3-to-8 원-핫 디코더
+│   ├── fulladder.v           #   전가산기
+│   └── Instruction.txt       #   예제 프로그램 목록
+├── logisim/
+│   └── 4-bit-cpu.circ        # Logisim 회로 파일
 ├── docs/                     # 웹 플레이그라운드 (GitHub Pages)
 │   ├── index.html
 │   ├── style.css
 │   └── cpu.js
-└── images/
-    ├── Instruction-Set.png
-    ├── Instruction-Operation-Code(opcode).png
-    ├── logisim_main.png
-    └── verilog_cpu_tb.png
+├── images/
+│   ├── Instruction-Set.png
+│   ├── Instruction-Operation-Code(opcode).png
+│   ├── logisim_main.png
+│   └── verilog_cpu_tb.png
+├── Makefile                  # 빌드 자동화 (make run / make wave / make clean)
+└── Dockerfile                # 로컬 설치 없이 시뮬레이션 실행
 ```
 
 ## Logisim 회로
