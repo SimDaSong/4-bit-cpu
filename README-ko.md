@@ -100,7 +100,7 @@ Logisim 구현에는 **프로그램 카운터(PC)**와 두 개의 **PROM**이 �
 
 ### 사전 요구사항
 
-- [Icarus Verilog](http://iverilog.icarus.com/) — 컴파일 및 시뮬레이션
+- [Icarus Verilog](https://steveicarus.github.io/iverilog/) — 컴파일 및 시뮬레이션
 - [GTKWave](http://gtkwave.sourceforge.net/) — 파형 뷰어 (선택)
 
 ### 빌드 및 실행

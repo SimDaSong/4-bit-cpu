@@ -100,7 +100,7 @@ The Logisim implementation includes a **Program Counter (PC)** and two **PROMs**
 
 ### Prerequisites
 
-- [Icarus Verilog](http://iverilog.icarus.com/) for compilation and simulation
+- [Icarus Verilog](https://steveicarus.github.io/iverilog/) for compilation and simulation
 - [GTKWave](http://gtkwave.sourceforge.net/) for waveform viewing (optional)
 
 ### Build & Run
